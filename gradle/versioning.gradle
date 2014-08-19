@@ -1,6 +1,6 @@
 def ciBuildNumber = System.env.SOURCE_BUILD_NUMBER
 version = (ciBuildNumber) ? new ProjectVersion(1, 0, Integer.parseInt(ciBuildNumber)) :
-        new ProjectVersion(1, 0, 1)
+        new ProjectVersion(1, 0, 3)
 
 class ProjectVersion {
 

@@ -1,0 +1,13 @@
+apply plugin: 'maven'
+
+group 'rs.dcsw.weatherly'
+
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: 'http://localhost:8081/nexus/content/repositories/releases/') {
+            authentication(userName: 'deployment', password: 'deployment123')
+        }
+
+        uniqueVersion = true
+    }
+}

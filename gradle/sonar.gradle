@@ -1,4 +1,5 @@
-apply plugin: "sonar-runner"
+apply plugin: 'sonar-runner'
+
 sonarRunner {
     sonarProperties {
         property 'sonar.host.url', 'http://localhost:9000'
