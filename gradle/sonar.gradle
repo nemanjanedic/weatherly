@@ -1,0 +1,21 @@
+apply plugin: "sonar-runner"
+sonarRunner {
+    sonarProperties {
+        property 'sonar.host.url', 'http://localhost:9000'
+        property 'sonar.jdbc.username', 'admin'
+        property 'sonar.jdbc.password', 'admin'
+        property 'sonar.projectKey', 'weatherly'
+        property 'sonar.projectName', 'Weatherly App'
+        property 'sonar.projectVersion', "$version"
+        property 'sonar.profile', 'Android Lint'
+    }
+}
+subprojects {
+    sonarRunner {
+        sonarProperties {
+            property 'sonar.sourceEncoding', 'UTF-8'
+            property 'sonar.android.emma.report', 'build/outputs/reports/coverage/debug/report.xml'
+            property 'sonar.language', 'Java'
+        }
+    }
+}
