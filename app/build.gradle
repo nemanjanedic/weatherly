@@ -11,13 +11,33 @@ android {
         versionCode version.build
         versionName "$version"
     }
+
+    signingConfigs {
+        debug {
+            storeFile file("$project.rootDir/debug.jks")
+            storePassword "weatherly"
+            keyAlias "weatherly"
+            keyPassword "weatherly"
+        }
+
+        release {
+            storeFile file("$project.rootDir/debug.jks")
+            storePassword "weatherly"
+            keyAlias "weatherly"
+            keyPassword "weatherly"
+        }
+    }
+
     buildTypes {
         debug {
             testCoverageEnabled true
+            debuggable true
+            signingConfig signingConfigs.debug
         }
         release {
             runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
     }
 }
