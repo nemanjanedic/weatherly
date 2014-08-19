@@ -1,0 +1,23 @@
+def ciBuildNumber = System.env.BUILD_NUMBER
+version = (ciBuildNumber) ? new ProjectVersion(1, 0, Integer.parseInt(ciBuildNumber)) :
+        new ProjectVersion(1, 0, 1)
+
+class ProjectVersion {
+
+    Integer major
+
+    Integer minor
+
+    Integer build
+
+    ProjectVersion(Integer major, Integer minor, Integer build) {
+        this.major = major
+        this.minor = minor
+        this.build = build
+    }
+
+    @Override
+    String toString() {
+        "$major.$minor.$build"
+    }
+}
