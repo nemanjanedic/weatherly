@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'maven'
 
 android {
     compileSdkVersion 20
@@ -19,7 +20,6 @@ android {
             keyAlias "weatherly"
             keyPassword "weatherly"
         }
-
         release {
             storeFile file("$project.rootDir/debug.jks")
             storePassword "weatherly"
@@ -44,4 +44,21 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+uploadArchives {
+//    artifacts {
+//        archives(file('build/outputs/apk/app-release.apk')) {
+//            name 'weatherly-app'
+//            type 'apk'
+//        }
+//    }
+
+    repositories.mavenDeployer {
+        repository(url: 'http://localhost:8081/nexus/content/repositories/releases/') {
+            authentication(userName: 'deployment', password: 'deployment123')
+        }
+
+        uniqueVersion = true
+    }
 }
